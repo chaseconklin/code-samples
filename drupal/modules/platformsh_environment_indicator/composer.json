@@ -1,0 +1,14 @@
+{
+    "name": "chaseconklin/platformsh_environment_indicator",
+    "description": "Changes the admin toolbar icon on staging and dev environments to better differentiate between dev, staging, and production. Works for Drupal 8/9 sites hosted on Platform.sh.",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Chase Conklin",
+            "email": "developer@chasemconklin.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

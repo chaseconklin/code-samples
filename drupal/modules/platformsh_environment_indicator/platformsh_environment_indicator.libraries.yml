@@ -1,0 +1,5 @@
+# Custom module library for general purposes.
+platformsh_environment_indicator:
+  css:
+    theme:
+      css/platformsh-environment-indicator.css: {}

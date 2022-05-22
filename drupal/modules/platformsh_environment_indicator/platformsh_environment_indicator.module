@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Platform.sh Environment Indicator module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+function platformsh_environment_indicator_preprocess_html(&$variables) {
+  $environment_name = getenv('PLATFORM_BRANCH');
+  if (\Drupal::currentUser()->hasPermission('access toolbar')){
+    if ($environment_name !== FALSE && $environment_name !== 'master') {
+      $variables['attributes']['class'][] = 'toolbar-icon-staging';  
+    }
+    elseif ($environment_name == FALSE) {
+      $variables['attributes']['class'][] = 'toolbar-icon-dev';  
+    }
+  }
+}
+function fpu_environment_indicator_preprocess_page(&$variables) {
+  $variables['#attached']['library'][] = 'platformsh_environment_indicator/platformsh_environment_indicator';
+}

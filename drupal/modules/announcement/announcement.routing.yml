@@ -1,0 +1,7 @@
+announcement.settings_form:
+  path: '/admin/config/system/announcement'
+  defaults:
+    _title: 'Announcement settings'
+    _form: 'Drupal\announcement\Form\SettingsForm'
+  requirements:
+    _permission: 'administer announcement configuration'

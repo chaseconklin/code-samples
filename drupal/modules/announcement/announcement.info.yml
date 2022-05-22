@@ -1,0 +1,7 @@
+name: Announcement
+type: module
+description: Provides an announcement block to display a site-wide announcement.
+package: Custom
+core_version_requirement: ^8 || ^9
+dependencies:
+  - block

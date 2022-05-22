@@ -1,0 +1,4 @@
+administer announcement configuration:
+  title: 'Administer announcement configuration'
+  description: 'Allowed to set activate and set announcement link.'
+  restrict access: true

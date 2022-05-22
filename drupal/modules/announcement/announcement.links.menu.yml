@@ -1,0 +1,6 @@
+announcement.settings_form:
+  title: Announcement
+  description: Configure Announcement.
+  parent: system.admin_config_system
+  route_name: announcement.settings_form
+  weight: 10

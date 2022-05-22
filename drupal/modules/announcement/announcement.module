@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Announcement module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for page.html.twig.
+ */
+function announcement_preprocess_page (&$variables) {
+  $config = \Drupal::config('announcement.settings');
+  $activated = $config->get('activate');
+
+  if ($activated !== 1) {
+    unset($variables['page']['announcement']);
+  }
+}

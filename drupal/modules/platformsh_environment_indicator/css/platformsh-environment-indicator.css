@@ -1,0 +1,11 @@
+.toolbar-icon-staging a.toolbar-icon-admin-toolbar-tools-help::before {
+  background-image: url(../images/EL_black_CMYK.svg);
+  padding: 2px 2px 0 2px;
+  margin-left: 4px;
+}
+
+.toolbar-icon-dev a.toolbar-icon-admin-toolbar-tools-help::before {
+  background-image: url(../images/EL_green_CMYK.svg);
+  padding: 2px 2px 0 2px;
+  margin-left: 4px;
+}

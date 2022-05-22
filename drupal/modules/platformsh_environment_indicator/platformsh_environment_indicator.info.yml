@@ -1,0 +1,8 @@
+name: Platform.sh Environment Indicator
+type: module
+description: Changes the admin toolbar icon depending on if the site is in the dev, staging, or production environment.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - admin_toolbar_tools

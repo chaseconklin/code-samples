@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Conditional Aliases module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_pathauto_pattern_alter()
+ *
+ */
+function conditional_aliases_pathauto_pattern_alter(&$pattern) {
+  $route_match = \Drupal::routeMatch();
+  $node = $route_match->getParameter('node');
+
+  if ($node) {
+
+    $node_id = $node->id();
+    $node_type = $node->getType();
+
+    if ($node_type == 'page') {
+
+      $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+      $menu_links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', array('node' => $node_id));
+
+      $pattern_string = '[node:menu-link:parents:join-path]/';
+
+      if (count($menu_links) > 0) {
+        $pattern_string = $pattern_string . '[node:menu-link]';
+      }
+      else {
+        $pattern_string = $pattern_string . '[node:title]';
+      }
+
+      $pattern->setPattern($pattern_string);
+    }
+
+    if ($node_type == 'person') {
+
+      $nickname = $node->get('field_per_nickname')->getString();
+      $sfid = $node->get('field_per_staff_id')->getString();
+
+      $pattern_string= '';
+      if (!empty($sfid)) {
+        $pattern_string = 'person/[node:field_per_staff_id:value]/';
+      }
+      else {
+        $pattern_string = 'person/[node:id]/';
+      }
+
+      if (!empty($nickname)) {
+        $pattern_string = $pattern_string . '[node:field_per_nickname]-[node:field_per_last_name]';
+      }
+      else {
+        $pattern_string = $pattern_string . '[node:field_per_first_name]-[node:field_per_last_name]';
+      }
+
+      $pattern->setPattern($pattern_string);
+    }
+  }
+}

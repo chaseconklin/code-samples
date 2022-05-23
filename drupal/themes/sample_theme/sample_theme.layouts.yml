@@ -1,0 +1,50 @@
+hero:
+  label: 'Hero'
+  category: 'Custom Layouts'
+  template: templates/layouts/hero
+  default_region: body
+  regions:
+    body:
+      label: Body
+  icon_map:
+    - [body]
+main:
+  label: 'Main Content'
+  category: 'Custom Layouts'
+  template: templates/layouts/main
+  default_region: body
+  regions:
+    body:
+      label: Body
+  icon_map:
+    - [body]
+aside:
+  label: 'Aside Content'
+  category: 'Custom Layouts'
+  template: templates/layouts/aside
+  default_region: body
+  regions:
+    body:
+      label: Body
+  icon_map:
+    - [body]
+right_sidebar:
+  label: 'Right Sidebar'
+  category: 'Custom Layouts'
+  template: templates/layouts/right-sidebar
+  default_region: body
+  regions:
+    body:
+      label: Body
+  icon_map:
+    - [body]
+left_sidebar:
+  label: 'Left Sidebar'
+  category: 'Custom Layouts'
+  template: templates/layouts/left-sidebar
+  default_region: body
+  regions:
+    body:
+      label: Body
+  icon_map:
+    - [body]

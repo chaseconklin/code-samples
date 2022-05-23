@@ -1,0 +1,26 @@
+ul[data-sa-theme="basic-blue"] > div.ui-autocomplete-field-group{
+    font-family: var(--font-header);
+    color: var( --primary-navy);
+    background-color: var(--neutral-lightGrey);
+  }
+  
+  ul[data-sa-theme="basic-blue"] .ui-autocomplete-fields > *:first-child{
+    font-family: var(--font-main);
+    color: var( --primary-navy);
+  
+  }
+  
+  ul[data-sa-theme="basic-blue"] > li.ui-menu-item{
+    background-color: var(--neutral-white);
+  }
+  
+  ul[data-sa-theme="basic-blue"] > li.ui-menu-item:hover{
+    background-color: var( --primary-navy);
+  }
+
+  .js input.form-autocomplete{
+    border-width: 0;
+    border-bottom: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right,var(--primary-orange),var(--secondary-maroon));
+  }

@@ -1,0 +1,192 @@
+/* Banner Block */
+
+.banner {
+  display: flex;
+  margin: 120px auto 0;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+
+  &.-right {
+    justify-content: end;
+  }
+
+  &.-left {
+    justify-content: start;
+  }
+
+  /* Image Element with Half or Full width options */
+  &__img {
+    width: 100vw;
+    height: 680px;
+    &.-half {
+      /* Class can't be assigned to element, must target element directly */
+      img {
+        min-height: 450px;
+      }
+    }
+    &.-full {
+    }
+  }
+
+
+  /* Content wraps the Text */
+  &__content {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 40px 5vw;
+
+    &.-left {
+      background: linear-gradient(to right, #59CBE8 0.2%, rgba(161, 216, 132, 0.6) 99.92%);
+
+      &::before {
+        left: -300px;
+      }
+    }
+    &.-right {
+      background: linear-gradient(to right, rgba(255, 103, 31, 0.6) 0.2%, #910048 99.92%);
+      color: var(--neutral-white);
+      &::before {
+      }
+    }
+  }
+
+  /* Text Element */
+  &__text {
+    position: relative;
+    &.-left {
+      text-align: left;
+      &::after {
+        content: url('/images/Linework/linework-wiggle-maroon.svg');
+        position: relative;
+        display: block;
+        margin-top: 24px;
+      }
+    }
+
+    &.-right {
+      text-align: right;
+      &::after {
+        content: url('/images/Linework/linework-wiggle-yellow.svg');
+        position: relative;
+        display: block;
+        margin-top: 24px;
+        right: 0;
+      }
+    }
+  }
+
+  /* Title element that styles the text */
+  &__title {
+    font-family: var(--font-header);
+    font-size: 2.75rem;
+    &.-allCaps {
+      font-family: var(--font-compressed);
+      text-transform: uppercase;
+      font-size: 4.5rem;
+      font-weight: 400;
+      line-height: 2.75rem;
+    }
+    &.-maroon {
+      color: var(--secondary-maroon);
+    }
+    &.-frost {
+      color: var(--secondary-frost);
+    }
+    &.-yellow {
+      color: var(--secondary-yellow);
+    }
+  }
+
+}
+
+
+@media screen and (min-width: 641px) {}
+
+@media screen and (min-width: 1025px) {
+  .banner {
+    &__img {
+      &.-half {
+        width: 50%;
+        height: auto;
+        margin-left: 50%
+      }
+    }
+
+    &__content {
+      margin: auto -50vw;
+      width: calc(95vw - 6px);
+      padding: 80px 0;
+      &.-left {
+        padding-left: 120px;
+        right: unset;
+        &::before {
+          content: url('/images/Linework/linework-double-maroon.svg');
+          position: absolute;
+          top: -44px;
+          left: 0;
+        }
+      }
+      &.-right {
+        padding-right: 120px;
+        left: unset;
+        &::before {
+          content: url('/images/Linework/linework-double-yellow.svg');
+          position: absolute;
+          transform: rotate(-45deg);
+          left: -20%;
+          top: 45%;
+        }
+      }
+    }
+    &__text {
+      max-width: 1360px;
+      margin: 0 auto;
+      &.-left {
+        &::before {
+          content: "";
+          --t: 5px;
+          --c: var(--secondary-maroon);
+          width: 24px;
+          height: 18px;
+          display: inline-block;
+          border: var(--t) solid transparent;
+          border-bottom-color: var(--c);
+          background: linear-gradient(to bottom left, transparent 49.5%,var(--c) 50% calc(50% + var(--t)), transparent calc(50% + var(--t) + 1px)) right, linear-gradient(to bottom right, transparent 49.5%,var(--c) 50% calc(50% + var(--t)), transparent calc(50% + var(--t) + 1px)) left;
+          background-size: 50% 100%;
+          background-origin: border-box;
+          background-repeat: no-repeat;
+          transform: rotate(90deg);
+          position: absolute;
+          left: -44px;
+          top: 8px;
+        }
+      }
+      &.-right {
+        &::before {
+          content: "";
+          --t: 5px;
+          --c: var(--secondary-yellow);
+          width: 24px;
+          height: 18px;
+          display: inline-block;
+          border: var(--t) solid transparent;
+          border-bottom-color: var(--c);
+          background: linear-gradient(to bottom left, transparent 49.5%,var(--c) 50% calc(50% + var(--t)), transparent calc(50% + var(--t) + 1px)) right, linear-gradient(to bottom right, transparent 49.5%,var(--c) 50% calc(50% + var(--t)), transparent calc(50% + var(--t) + 1px)) left;
+          background-size: 50% 100%;
+          background-origin: border-box;
+          background-repeat: no-repeat;
+          transform: rotate(270deg);
+          position: absolute;
+          right: -44px;
+          top: 8px;
+        }
+      }
+    }
+  }
+}

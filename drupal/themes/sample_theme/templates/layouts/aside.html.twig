@@ -1,0 +1,9 @@
+{% if content %}
+  <div {{ attributes.setAttribute('id', content['#settings'].label|clean_class) }}>
+  {% if content.body %}
+    <div{{ region_attributes.body }}>
+      {{ content.body }}
+    </div>
+  {% endif %}
+  </div>
+{% endif %}

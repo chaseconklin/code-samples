@@ -1,0 +1,64 @@
+.sidebar {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 72px 0 0;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  color: var(--neutral-darkGrey);
+  border-width: 0;
+  border-bottom: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, var(--secondary-frost), var(--secondary-mint));
+  &.-maroonToOrange {
+    border-image-source: linear-gradient(to right, var(--secondary-maroon), var(--primary-orange));
+  }
+  &__title {
+    padding: 15px;
+    margin: 0;
+    background: linear-gradient(to left, rgba(196, 196, 196, 0.37) 0%, rgba(196, 196, 196, 0) 100%), var(--neutral-lightGrey);
+    &Link {
+      color: var(--primary-navy);
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__section {
+    padding: 16px;
+    margin: 0;
+    background: var(--neutral-lightGrey);
+    margin-bottom: 3px;
+    &.-full {
+      padding: 0;
+    }
+    &.-last {
+      margin: 0;
+    }
+  }
+  &__subTitle {
+    font-size: .875rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  &__list {
+    list-style-position: inside;
+  }
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .sidebar {
+    max-width: 350px;
+    margin-top: 0;
+    margin-bottom: 48px;
+    &.-noNegative {
+      margin-top: 100px;
+    }
+  }
+}

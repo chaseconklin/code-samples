@@ -1,0 +1,111 @@
+/**
+ *   Main tab wrapper 
+ *   For detailed instructions see: 
+ *   https://github.com/tabpanelwidget/tabpanelwidget/blob/master/src/tabpanelwidget.scss
+ **/
+
+/** Tabs **/
+.tpw-hx {
+
+  /* The tabs */
+  .tpw-tab {
+    margin: 6px;
+    padding: 12px;
+    background-color: #dbdbdb;
+    color: var(--neutral-darkGrey) !important;
+    font-size: 16px;
+    font-family: var(--font-main);
+  }
+
+  /* The currently selected tab */
+  &.tpw-selected {
+    .tpw-tab {
+      margin: 0;
+      padding: 14px;
+      font-weight: bold;
+      border-color: transparent;
+      &::after {
+        content: '';
+        display: block;
+        margin-top: 4px;
+        width: 80%;
+        height: 4px;
+        background-color: #dbdbdb;
+      }
+    }
+  }
+
+}
+
+/** Accordion **/
+.tpw-accordion {
+
+  .tpw-header {
+    display: inline-block;
+    margin: 6px 0 0;
+    padding: 12px;
+    background-color: #dbdbdb;
+    border: 0;
+    color: var(--neutral-darkGrey) !important;
+    font-size: 16px;
+    font-family: var(--font-main);
+    /* Icon */
+    &::before {
+      display: none;
+    }
+    &::after {
+      content: '';
+      display: block;
+      margin-top: 8px;
+      width: 20%;
+      height: 4px;
+      background-color: var(--secondary-grey);
+    }
+    &:focus::after {
+      background: linear-gradient(to left, var(--secondary-maroon) 50%, var(--primary-orange));
+    }
+  }
+
+  .tpw-selected {
+    .tpw-header {
+      background-color: var(--neutral-white);
+      font-weight: bold;
+      &::after {
+        background-color: #dbdbdb;
+      }
+    }
+  }
+
+
+}
+
+.tpw-accordion .tpw-header:focus {
+  text-shadow: none;
+}
+
+/** Required to be outside of wrapper tag due to JS **/
+
+/* div that contains the tab content */
+.tpw-panel {
+  border: 0 !important;
+  color: var(--neutral-darkGrey);
+  & > p:first-child {
+    margin-top: 0;
+  }
+}
+
+.tpw-tabpanel .tpw-tab:focus {
+  text-shadow: none;
+  &::after {
+    background: linear-gradient(to left, var(--secondary-maroon) 50%, var(--primary-orange));
+  }
+}
+
+.tpw-shim {
+  outline: none;
+}
+
+.tpw-js .tpw-shim:focus .tpw-panel {
+  outline: none;
+  box-shadow: inset 0 0 0 3px var(--utility-linkBlue);
+}

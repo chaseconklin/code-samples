@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{% set menu_data = {
+  0: {path: 'undergraduate', label: 'Undergraduate', parent: 'primary:menu_link_content:7b850bd1-35e8-4ed1-9861-0d774b8cd101'},
+  1: {path: 'degree-completion', label: 'Degree Completion', parent: 'primary:menu_link_content:328a2d30-a658-4569-a50c-81340e8c0aae'},
+  2: {path: 'graduate', label: 'Graduate', parent: 'primary:menu_link_content:208a355d-e79b-4879-be62-5bc112db95bc'},
+  3: {path: 'seminary', label: 'Seminary', parent: 'primary:menu_link_content:36c1aaea-8791-4d5e-8ea6-809e9a38dbfb'},
+  4: {path: 'online', label: 'Online', parent: 'primary:menu_link_content:4cba1e11-39e1-4ca5-8230-f74056d1ac51'},
+  5: {path: 'about', label: 'About', parent: 'primary:menu_link_content:139c26a8-2f4d-4baf-8eb3-083b708ee5fc'}
+} %}
+
+{% set page_path = path('<current>')|split('/') %}
+
+{% for item in menu_data %}
+  {% if page_path[1] == item.path %}
+
+  {{ drupal_block('menu_block:primary',
+    {
+      label: item.label,
+      parent: item.parent,
+      suggestion: 'mobile',
+      label_type: 'fixed',
+      depth: 2,
+      expand_all_items: true
+    }
+  )}}
+
+  {% endif %}
+{% endfor %}

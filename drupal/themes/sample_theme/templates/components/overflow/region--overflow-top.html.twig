@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% if content %}
+  <div{{ attributes.addClass("overflow__top") }}>
+    <div class="overflow__grid">
+      <header class="overflow__logo">
+        <div class="logo -horz">
+          <a href="/">
+            <img src="/{{ active_theme_path() }}" alt="Logo">
+          </a>
+        </div>
+      </header>
+
+      <div class="overflow__content">
+        <form class="search -overflow" action="/search/results" method="get">
+          <label for="overflow_keyword" class="visually-hidden">Search term</label>
+          <input class="search__text" id="overflow_keyword" type="text" name="keyword" value="" size="60" maxlength="128">
+          <button class="search__submit -icon" type="submit">
+            Search
+          </button>
+        </form>
+        <a class="button -gradient -small -navy" href="/apply">Apply Now</a>
+        <a class="button -gradient -small -yellow" href="/visit">Visit a Campus</a>
+      </div>
+
+      <div class="overflow__button">
+        <div class="overflowButton -close">
+          <button class="overflowButton__button -close">Close</button>
+        </div>
+      </div>
+
+      {{ content }}
+
+    </div>
+  </div>
+{% endif %}

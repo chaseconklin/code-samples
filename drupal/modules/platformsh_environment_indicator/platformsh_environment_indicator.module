@@ -20,6 +20,6 @@ function platformsh_environment_indicator_preprocess_html(&$variables) {
     }
   }
 }
-function fpu_environment_indicator_preprocess_page(&$variables) {
+function platformsh_environment_indicator_preprocess_page(&$variables) {
   $variables['#attached']['library'][] = 'platformsh_environment_indicator/platformsh_environment_indicator';
 }

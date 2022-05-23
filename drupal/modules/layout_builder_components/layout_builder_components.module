@@ -1,0 +1,125 @@
+<?php
+
+function layout_builder_components_theme($existing, $type, $theme, $path) {
+  return array(
+    'block__layout_builder_components' => array(
+      'render element' => 'elements',
+      'template' => 'block--hero',
+      'base hook' => 'block'
+    )
+  );
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function layout_builder_components_preprocess_block(&$variables) {
+
+  if ($variables['plugin_id'] === 'hero_component') {
+
+    // Get the current node
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    // Get the current term page
+    $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+
+    if ($node instanceof \Drupal\node\NodeInterface || $term) {
+
+      $pretitle_override = '';
+      $subtitle_override = '';
+      $config = $variables['elements']['#configuration'];
+
+      if (array_key_exists('hero_pretitle_override', $config)) {
+        $pretitle_override = $config['hero_pretitle_override'];
+      }
+
+      if (array_key_exists('hero_subtitle_override', $config)) {
+        $subtitle_override = $config['hero_subtitle_override'];
+      }
+
+      // Normalize the fields across different content types
+      if ($node) {
+        switch($node->getType()) {
+
+        case 'page':
+          $hero = $node->get('field_bp_hero_image');
+          $pretitle = ($pretitle_override ? $pretitle_override : NULL);
+          $subtitle = (!empty($subtitle_override) ? $subtitle_override : $node->field_bp_subtitle->value);
+          $node_title = $node->getTitle();
+          break;
+
+        case 'person':
+          $hero = NULL;
+          $department = '';
+          $person_type = $node->field_per_type->value;
+          if (!($node->field_per_department->isEmpty())) {
+            $department = $node->field_per_department->referencedEntities()[0]->getName();
+          }
+          $pretitle = (!empty($pretitle_override) ? $pretitle_override : $person_type);
+          $subtitle = (!empty($subtitle_override) ? $subtitle_override : $department);
+          $first_name = $node->field_per_first_name->value;
+          $last_name = $node->field_per_last_name->value;
+          $nickname = $node->field_per_nickname->value;
+          $node_title = (!empty($nickname) ? $nickname . ' ' . $last_name : $node->getTitle());
+          break;
+
+        case 'event':
+          $hero = NULL;
+          $pretitle = ($pretitle_override ? $pretitle_override : NULL);
+          $subtitle = ($subtitle_override ? $subtitle_override : NULL);
+          $node_title = 'Events';
+          break;
+
+        case 'career':
+          $hero = NULL;
+          $pretitle = (!empty($pretitle_override) ? $pretitle_override : $node->field_c_career_type->getString());
+          $subtitle = ($subtitle_override ? $subtitle_override : NULL);
+          $node_title = $node->getTitle();
+          break;
+
+        default:
+          $hero = NULL;
+          $pretitle = ($pretitle_override ? $pretitle_override : NULL);
+          $subtitle = ($subtitle_override ? $subtitle_override : NULL);
+          $node_title = $node->getTitle();
+          break;
+        }
+
+        // Pass current node values
+        $variables['nid'] = $node->id();
+        $variables['node'] = $node;
+        $variables['node_type'] = $node->getType();
+      }
+      elseif ($term) {
+        switch($term->bundle()) {
+        case 'department':
+          $hero = $term->get('field_dept_image');
+          $pretitle = ($pretitle_override ? $pretitle_override : NULL);
+          $subtitle = ($subtitle_override ? $subtitle_override : NULL);
+          $node_title = $term->getName();
+          break;
+
+        case 'location':
+          $hero = $term->get('field_loc_photo');
+          $pretitle = ($pretitle_override ? $pretitle_override : NULL);
+          $subtitle = ($subtitle_override ? $subtitle_override : NULL);
+          $node_title = $term->getName();
+          break;
+
+        default:
+          $hero = NULL;
+          $pretitle = ($pretitle_override ? $pretitle_override : NULL);
+          $subtitle = ($subtitle_override ? $subtitle_override : NULL);
+          $node_title = $term->getName();
+          break;
+        }
+      }
+
+      // Pass hero computed values
+      $variables['node_title'] = $node_title;
+      $variables['hero'] = $hero;
+      $variables['pretitle'] = $pretitle;
+      $variables['subtitle'] = $subtitle;
+    }
+  }
+}

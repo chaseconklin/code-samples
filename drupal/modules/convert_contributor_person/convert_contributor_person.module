@@ -9,7 +9,7 @@
  * @see https://www.drupal.org/node/2217931
  */
 
-function convert_contributor_to_person_deploy_convert () {
+function convert_contributor_person_deploy_convert () {
   /* Query all articles where the contributor field has an entry */
   $query = \Drupal::entityQuery('node');
   $query->condition('type', 'article');

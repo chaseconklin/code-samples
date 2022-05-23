@@ -1,0 +1,314 @@
+/* TODO: Refactor code and move the code to their respective component files */
+
+.grid {
+  display: grid;
+
+  /* Grid for the main body content of each page */
+  &.-content {
+    grid-template-columns: minmax(0px, 350px) minmax(80px, 1fr) minmax(0px, 350px);
+    column-gap: 20px;
+    max-width: 1440px;
+    margin: 70px 5vw;
+    grid-template-areas:
+    "main main main"
+    "aside aside aside";
+    &.-left {
+      &.-sidebar {
+        grid-template-areas:
+          "sidebar sidebar sidebar"
+          "main main main"
+          "aside aside aside";
+      }
+    }
+    &.-right {
+      &.-sidebar {
+        grid-template-areas:
+          "main main main"
+          "aside aside aside"
+          "sidebar sidebar sidebar";
+      }
+    }
+  }
+
+  /* Grid for different variations of cards */
+
+  &.-card {
+    --columns: 1;
+    grid-template-columns: repeat(var(--columns), minmax(100px, 100%));
+    grid-gap: 20px;
+    row-gap: 20px;
+    &.-person {
+    }
+
+    &.-vert {
+      --columns: 1;
+      --card-width: 275px;
+      --column-width: 32px;
+      grid-template-columns: repeat(var(--columns), var(--card-width));
+      column-gap: var(--column-width);
+      row-gap: 32px;
+      align-items: start;
+      justify-content: center;
+      &.-large {
+        --columns: 1;
+      }
+
+      &.-large {
+        --card-width: minmax(280px, 440px);
+      }
+    }
+    &.-promo {
+      --columns: 1;
+      grid-template-columns: repeat(var(--columns), minmax(250px, 600px));
+      grid-auto-rows: minmax(150px, 180px);
+      grid-gap: 16px;
+      margin: 0 16px;
+      justify-content: center;
+    }
+  }
+
+  /* Grid for photos that will be static regardless of screen size */
+
+  &.-photo {
+    --photo-size: 100vw;
+    max-width: 1400px;
+    margin: 75px auto 0;
+    grid-template-columns: repeat(var(--columns), minmax(100px, var(--photo-size)));
+    grid-template-rows: auto;
+    gap: 16px;
+    justify-content: center;
+    &.-count2,
+    &.-count3,
+    &.-count4,
+    &.-count5, {
+      --columns: 2;
+      --photo-size: 50vw;
+    }
+  }
+
+  /* Grid for the basic callout items */
+
+  &.-callout {
+    margin: 120px auto 0;
+    grid-template-columns: repeat(var(--columns), minmax(100px, 430px));
+    grid-template-rows: repeat(var(--rows), var(--row-size));
+    column-gap: 36px;
+    justify-content: center;
+    --columns: 1;
+    --rows: 3;
+    --row-size: auto;
+    &.-two {
+    }
+    &.-three {
+      --columns: 1;
+    }
+  }
+
+  /* Grid for quickfacts, should be able to accept any numer of quickfacts */
+
+  &.-quickfact {
+    --columns: 2;
+    grid-template-columns: repeat(var(--columns), minmax(100px, 300px));
+    grid-auto-rows: 160px;
+    grid-gap: 32px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    &.-linework {
+      &::after {
+        content: url('/images/Linework/linework-angle-blue.svg');
+        position: absolute;
+        top: calc(50% - 20px);
+        z-index: -1;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  /* Setting grid areas for content sections */
+
+  &__main{
+    grid-area: main;
+    margin-bottom: 24px;
+    &.-basicPage {
+      max-width: 900px;
+    }
+  }
+  &__aside {
+    grid-area: aside;
+    margin-bottom: 24px;
+  }
+  &__sidebar {
+    grid-area: sidebar;
+    &.-left {
+      margin-top: -72px;
+      margin-bottom: 72px;
+    }
+    &.-right {
+      margin-bottom: 24px;
+    }
+  }
+  &__img {
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .grid {
+    &.-content {
+      &.-split {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "main aside"
+        "main aside"
+        "sidebar sidebar";
+      }
+    }
+    &.-card {
+      &.-person {
+        --columns: 2;
+        &.-full {
+          row-gap: 36px;
+        }
+        &.-medium {
+          --columns: 1;
+        }
+      }
+      &.-vert {
+        --columns: 2;
+        justify-content: stretch;
+      }
+      &.-sidebyside {
+        --columns: 2;
+      }
+    }
+    &.-photo {
+      &.-count2,
+      &.-count4 {
+        --columns: 2;
+        --photo-size: 50vw;
+      }
+      &.-count3,
+      &.-count5 {
+        --columns: 3;
+        --photo-size: 33vw;
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: 1025px) {
+  .grid {
+    max-width: calc(100vw - 40px);
+    &__sidebar {
+      grid-area: sidebar;
+      &.-left {
+        margin-top: -100px;
+        margin-bottom: 0;
+      }
+      &.-right {
+        margin-top: -100px;
+        margin-bottom: 0;
+      }
+    }
+
+    &.-content {
+      column-gap: 40px;
+      margin-left: 5%;
+      margin-right: 5%;
+
+      &.-split {
+        margin-left: 10%;
+      }
+
+      &.-left {
+        margin-left: 10%;
+        margin-right: 32px;
+        &.-sidebar {
+          grid-template-areas:
+          "sidebar main main"
+          "sidebar aside aside";
+        }
+      }
+
+      &.-right {
+        margin-left: 10%;
+        margin-right: 32px;
+        &.-sidebar {
+          grid-template-areas:
+          "main main sidebar"
+          "aside aside sidebar";
+        }
+      }
+
+    }
+
+    &.-callout {
+      --row-size: 640px;
+      &.-three {
+        --rows: 1;
+        --columns: 3;
+      }
+    }
+
+    &.-card {
+      &.-promo {
+        --columns: 3;
+      }
+      &.-vert {
+        --columns: 4;
+        &.-threecol {
+          --columns: 3;
+        }
+        &.-smallgap {
+          --column-width: 20px;
+        }
+      }
+      &.-sidebyside {
+        --columns: 2;
+      }
+    }
+
+    &.-quickfact {
+      --columns: 4;
+      &.-linework {
+        &::after {
+          transform: none;
+        }
+      }
+    }
+
+    &.-one {
+      --columns: 1;
+    }
+    &.-two {
+      --columns: 2;
+    }
+    &.-three {
+      --columns: 3;
+    }
+
+    &.-photo {
+      &.-count2 {
+        --columns: 2;
+        --photo-size: 50vw;
+      }
+      &.-count3 {
+        --columns: 3;
+        --photo-size: 33vw;
+      }
+      &.-count4 {
+        --columns: 4;
+        --photo-size: 25vw;
+      }
+      &.-count5 {
+        --columns: 5;
+        --photo-size: 20vw;
+      }
+
+    }
+
+  }
+}

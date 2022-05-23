@@ -1,0 +1,85 @@
+/* Footer Block */
+
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1440px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 60px;
+
+/* Linework between left and right sides of footer */
+
+  &::after {
+    content: url(/images/Linework/linework-double-blue.svg);
+    position: absolute;
+    transform: rotate(180deg);
+    align-self: center;
+    top: 264px;
+    left: calc(50% - 160px);
+  }
+
+/* Left Element */
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5% 90px;
+    flex-shrink: 0;
+  }
+
+/* Right Element */
+
+  &__right {
+
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 5% 0;
+  }
+
+/* Copywrite notice Element */
+
+  &__copy {
+    display: block;
+    color: var(--neutral-mediumGrey);
+    font-size: .875rem;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 15px
+  }
+
+/* Verse Text Element */
+
+  &__verse {
+    display: block;
+    margin: 0;
+    margin-bottom: 24px;
+    font-family: var(--font-header);
+    line-height: 1.5rem;
+    color: var(--neutral-mediumGrey);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .footer {
+    flex-direction: row;
+    &::after {
+      transform: rotate(90deg);
+      top: 360px;
+      left: calc(-141px + 10%);
+    }
+    &__left {
+      margin-bottom: 0px;
+    }
+    &__right {
+      align-items: start;
+      text-align: left;
+    }
+  }
+}

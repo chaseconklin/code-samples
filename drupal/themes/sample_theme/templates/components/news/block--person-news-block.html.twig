@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{% set button_attributes = create_attribute() %}
+
+{% set title_classes = ['content__header', '-section'] %}
+{% set button_classes = ['button', '-outline', '-small', '-' ~ content['#button_color']] %}
+
+{% if content['#top_of_page'] == 1 %}
+  {% set title_classes = ['content__header', '-top'] %}
+{% endif %}
+
+{% if content['#articles_exist'] == '1' %}
+  <section class="content__text">
+    {% if configuration.label_display %}
+      <h2{{ title_attributes.addClass(title_classes) }}>{{ content['#title'] }}</h2>
+    {% endif %}
+    <div class="grid -card -two">
+      {% block content %}
+        {% for article in content['#articles'] %}
+          <a class="card -vert -large -borderBottom" href={{ article.link }}>
+            <div class="card__text -vert">
+              <p class="card__title -vert">
+                {{ article.title }}
+              </p>
+              <p class="card__details -vert">
+                {{ article.created }}
+              </p>
+            </div>
+          </a>
+        {% endfor %}
+      {% endblock %}
+    </div>
+    <a{{ button_attributes.addClass(button_classes).setAttribute('href', 'https://feed.news.com/news/person/' ~ content['#staff_id']) }}>
+      View All Related News
+    </a>
+  </section>
+{% endif %}

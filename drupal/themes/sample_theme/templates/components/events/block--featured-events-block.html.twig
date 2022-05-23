@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{% set button_attributes = create_attribute() %}
+
+{% set block_classes = ['view'] %}
+{% set title_classes = ['view__title', '-' ~ configuration.title_color] %}
+{% set button_classes = ['button', '-outline', '-small', '-' ~ configuration.button_color] %}
+
+{% if configuration.background_style.triangle_status == 1 %}
+  {% set block_classes = block_classes|merge([
+    '-triangle',
+    '-' ~ configuration.background_style.triangle_position, 
+    '-' ~ configuration.background_style.triangle_color
+  ]) %}
+{% endif %}
+
+{% if configuration.top_of_page == 'content' %}
+  {% set block_classes = block_classes|merge(['-top']) %}
+{% elseif configuration.top_of_page == 'hero' %}
+  {% set block_classes = block_classes|merge(['-halfTop']) %}
+{% endif %}
+
+<div{{ attributes.addClass(block_classes) }}>
+  <div class="view__content">
+    {{ title_prefix }}
+    {% if configuration.label_display %}
+      <h2{{ title_attributes.addClass(title_classes) }}>{{ configuration.label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% block content %}
+      {% if configuration.event_category_reference is empty %}
+        {{ drupal_view('events', 'block_events_upcoming_featured') }}
+        <a {{ button_attributes.addClass(button_classes) }} href="/news-events">
+          View All Events
+        </a>
+      {% else %}
+        {% set category_id = configuration.event_category_reference.0.target_id %}
+        {{ drupal_view('events', 'block_events_upcoming_featured', category_id) }}
+        <a {{ button_attributes.addClass(button_classes) }} href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': category_id}) }}">
+          View All Events
+        </a>
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>

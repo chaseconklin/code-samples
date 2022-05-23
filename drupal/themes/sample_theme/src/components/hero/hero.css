@@ -1,0 +1,324 @@
+/* Hero Block */
+
+.hero {
+  --hero-position: center;
+  color: var(--neutral-white);
+  background-size: cover;
+  background-position: var(--hero-position);
+  mix-blend-mode: normal;
+  margin-top: -105px;
+  position: relative;
+  &.-small {
+    padding: 145px 0 40px;
+    background-image: linear-gradient(0deg, rgba(0, 32, 91, 0.5), rgba(0, 32, 91, 0.5)), linear-gradient(115.52deg, #910048 8.33%, rgba(0, 169, 206, 0.5) 59.8%), var(--hero-image, none);
+  }
+  &.-medium {
+    background-image: linear-gradient(to bottom right, rgba(145, 0, 72, 0.5) 8.33%, rgba(0, 169, 206, 0.25) 59.8%), linear-gradient(to top, rgba(0, 32, 91, 0.5), rgba(0, 32, 91, 0.5)), var(--hero-image, none);
+    padding: 205px 0 100px 0;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 85%;
+      width: calc(50% - 720px);
+      top: 105px;
+      background: linear-gradient(to bottom, var(--primary-orange), var(--primary-orange-transparent));
+      opacity: 0.8;
+      z-index: 1;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 105px;
+      left: 0;
+      width: 330px;
+      height: 85%;
+      background: linear-gradient(to bottom, var(--primary-orange), var(--primary-orange-transparent));
+      opacity: 0.8;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+  }
+  &.-large {
+    background-image: linear-gradient(to bottom right, rgba(145, 0, 72, 0.8) 8.33%, rgba(0, 169, 206, 0.4) 59.8%, rgba(0, 169, 206, 0.6)), var(--hero-image, none);
+    padding: 425px 0 52px 0;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 95%;
+      width: calc(50% - 720px);
+      top: 105px;
+      background: linear-gradient(to bottom, var(--primary-orange), var(--primary-orange-transparent));
+      opacity: 0.8;
+      z-index: 1;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 105px;
+      left: 0;
+      width: 660px;
+      height: 95%;
+      background: linear-gradient(to bottom, var(--primary-orange), var(--primary-orange-transparent));
+      opacity: 0.8;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+  }
+  &.-xlarge {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 63.38%, #FFFFFF 100%), var(--hero-image, none);
+    padding: 285px 0 180px 0;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 95%;
+      width: calc(50% - 720px);
+      top: 105px;
+      right: 0;
+      background: linear-gradient(to bottom, var(--primary-orange), var(--primary-orange-transparent));
+      opacity: 0.8;
+      z-index: 1;
+    }
+  }
+
+  /* Video Element */
+
+  &__video {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-height: 860px;
+    overflow: hidden;
+    & video {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* Graphic Element */
+
+  &__graphic {
+    max-width: 80%;
+    padding-top: 25%;
+    & img {
+      object-fit: fill;
+    }
+  }
+
+  /* Content Container Element */
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    &.-right {
+      text-align: right;
+      right: 0;
+      bottom: -125px;
+      align-items: center;
+    }
+  }
+
+  /* Title Element */
+
+  &__title {
+    position: relative;
+    margin: 0 5%;
+    font-family: var(--font-header);
+    font-style: italic;
+    font-weight: normal;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-shadow: -1px 0 var(--primary-navy), 0 1px var(--primary-navy), 1px 0 var(--primary-navy), 0 -1px var(--primary-navy);
+    text-shadow: 
+      -1px -1px 0 var(--primary-navy), 
+      1px -1px 0 var(--primary-navy), 
+      -1px 1px 0 var(--primary-navy), 
+      1px 1px 0 var(--primary-navy);
+    overflow-wrap: break-word;
+  }
+
+  &__preTitle {
+    margin: 0 5%;
+    font-family: var(--font-header);
+    font-weight: 600; 
+    font-size: 1.5rem;
+    color: var(--secondary-yellow);  
+    text-transform: uppercase;
+    text-shadow: 
+      -1px -1px 0 var(--primary-navy), 
+      1px -1px 0 var(--primary-navy), 
+      -1px 1px 0 var(--primary-navy), 
+      1px 1px 0 var(--primary-navy);
+  }
+
+  /* SubTitle Element */
+
+  &__subTitle {
+    font-family: var(--font-header);
+    font-size: 1.125rem;
+    position: relative;
+    margin: 8px 5% 0;
+    padding-left: 36px;
+    text-shadow: 
+      -1px -1px 0 var(--primary-navy), 
+      1px -1px 0 var(--primary-navy), 
+      -1px 1px 0 var(--primary-navy), 
+      1px 1px 0 var(--primary-navy);
+    &::before {
+      content: "";
+      --t: 3px;  /* Thickness */
+      --c: var(--secondary-frost); /* Color */
+      width: 18px;
+      height: 15px;
+      display: inline-block;
+      border: var(--t) solid transparent;
+      border-bottom-color: var(--c);
+      background:
+      /* Left side */
+      linear-gradient(to bottom left,
+      transparent 49.5%,var(--c) 50% calc(50% + var(--t)),
+      transparent calc(50% + var(--t) + 1px)) right,
+      /* right side */
+      linear-gradient(to bottom right,
+      transparent 49.5%,var(--c) 50% calc(50% + var(--t)),
+      transparent calc(50% + var(--t) + 1px)) left;
+      background-size: 50% 100%;
+      background-origin: border-box;
+      background-repeat: no-repeat;
+      transform: rotate(90deg);
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .hero {
+    &.-large {
+      padding: 345px 0 240px;
+    }
+    &.-xlarge {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 105px;
+        right: 0;
+        width: 800px;
+        height: 95%;
+        background: linear-gradient(to bottom, var(--primary-orange), var(--primary-orange-transparent));
+        opacity: 0.8;
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+      }
+
+    }
+
+    &__content {
+      &.-right {
+        align-items: flex-end;
+        right: 90px;
+      }
+    }
+    &__preTitle {
+      margin: 0 5%;
+    }
+    &__title {
+      font-size: 3rem;
+      overflow-wrap: normal;
+      margin: 0 5%;
+    }
+    &__subTitle {
+      margin: 8px 5% 0;
+    }
+
+    /* Linework Element for Large/Giant Hero */
+
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .hero {
+    &__video {
+      display: block;
+    }
+    &__content {
+      &.-right {
+        right: 145px;
+        bottom: unset;
+      }
+    }
+    &__preTitle {
+      margin: 0 10%;
+    }
+    &__title {
+      margin: 0 10%;
+    }
+    &__subTitle {
+      margin: 8px 10% 0;
+      &.-person {
+        margin-bottom: 16px;
+      }
+    }
+    &__graphic {
+      padding-top: 0;
+      max-width: 80%;
+    }
+    &__linework {
+      position: relative;
+      &.-angle {
+        &::before {
+          content: url('/images/Linework/linework-double-blue.svg');
+          position: absolute;
+          transform: rotate(215deg);
+          top: -100px;
+          left: -250px;
+        }
+      }
+      &.-bottom {
+        bottom: -150px;
+        &::before {
+          content: url('/images/Linework/linework-double-blue.svg');
+          position: absolute;
+          left: -200px;
+        }
+        &::after {
+          content: url('/images/Linework/linework-double-blue.svg');
+          position: absolute;
+          transform: rotate(180deg);
+          top: -6px;
+          left: 400px;
+        }
+      }
+    }
+
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .hero {
+    &.-medium {
+      &::after {
+        left: calc(50% - 720px);
+      }
+    }
+    &.-large {
+      padding-top: 445px;
+      &::after {
+        left: calc(50% - 720px);
+      }
+    }
+    &.-xlarge {
+      padding-top: 400px;
+      &::after {
+        right: calc(50% - 720px);
+      }
+    }
+    &__video {
+      max-height: 970px;
+    }
+  }
+}

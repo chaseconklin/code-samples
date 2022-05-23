@@ -1,0 +1,99 @@
+.overflowButton {
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  width: 90px;
+  height: 90px;
+  &.-open {
+    background: linear-gradient(to top, var(--secondary-maroon-transparent), var(--secondary-maroon));
+  }
+  &.-close {
+    position: relative;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to top, var(--primary-navy-transparent), var(--primary-navy));
+    flex-shrink: 0;
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    left: 50%;
+    top: 5px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: .6rem;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    height: 2.5rem;
+    --icon-color: var(--neutral-white);
+    &.-open {
+      &::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 0.2rem;
+        margin-top: 1rem;
+        background: var(--icon-color);
+        box-shadow:
+        0 0.5rem 0 0 var(--icon-color),
+        0 1rem 0 0 var(--icon-color);
+      }
+    }
+    &.-close {
+      &::before {
+        position: absolute;
+        display: block;
+        content: "";
+        background: var(--icon-color);
+        height: 3px;
+        width: 1.5rem;
+        border-radius: 4px;
+        transform: translateY(1.5rem) rotate(45deg);
+      }
+      &::after {
+        position: absolute;
+        display: block;
+        content: "";
+        background: var(--icon-color);
+        height: 3px;
+        width: 1.5rem;
+        border-radius: 4px;
+        transform: translateY(1.5rem) rotate(-45deg);
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 1025px) {
+  .overflowButton {
+    width: 145px;
+    height: 145px;
+    &__button {
+      font-size: .875rem;
+      top: 8px;
+      height: 3rem;
+      &.-open {
+        &::after {
+          margin-top: 1.5rem;
+          width: 28px;
+          box-shadow:
+          0 0.625rem 0 0 var(--icon-color),
+          0 1.25rem 0 0 var(--icon-color);
+        }
+      }
+      &.-close {
+        &::before {
+          width: 1.75rem;
+          transform: translateY(2rem) rotate(45deg);
+        }
+        &::after {
+          width: 1.75rem;
+          transform: translateY(2rem) rotate(-45deg);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{%
+  set classes = [
+    'webform__input',
+    attributes.required ? '-required',
+    '-' ~ attributes.type|clean_class,
+    attributes.type|clean_class in ['checkbox', 'radio'] ? '-option',
+  ]
+%}
+
+{%
+  set removeClasses = [
+    'form-' ~ attributes.type|clean_class,
+    'required',
+  ]
+%}
+<input{{ attributes.removeClass(removeClasses).addClass(classes) }} />{{ children }}

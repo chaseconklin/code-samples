@@ -1,0 +1,15 @@
+.ckeditor-readmore-toggler{
+    padding: 4px 24px;
+    color: var(--primary-navy);
+    font-family: var(--font-main);
+    font-size: 1.125rem;
+    line-height: 23px;
+    padding: 8px 32px;
+    background-color: var(--background-grey);
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, var(--secondary-mint), var(--secondary-frost)) 1;
+  }
+  .ckeditor-readmore-toggler:hover{
+    cursor: pointer;
+  }

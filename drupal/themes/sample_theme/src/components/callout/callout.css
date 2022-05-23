@@ -1,0 +1,112 @@
+/* Callout Block */
+
+.callout {
+  display: block;
+  margin: 120px auto 0;
+  font-size: 1.375rem;
+  position: relative;
+  &.-gridItem {
+    margin: 0;
+    &.-middle {
+      padding: 24px 0;
+      margin: 56px 0;
+      border-width: 5px;
+      border-style: solid;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to bottom right, var(--primary-orange), var(--secondary-frost));
+    }
+  }
+  &.-bg {
+    background-image: var(--background-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 40px 0;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    &.-repeat {
+      background-repeat: repeat;
+      background-size: auto;
+    }
+  }
+  &.-linework {
+    padding-top: 20px;
+    &::after {
+      content: url('/images/Linework/linework-wiggle-yellow.svg');
+      position: absolute;
+      top: -20px;
+      left: calc(50% - 175px);
+    }
+  }
+
+/* Content Wrapper Element */
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+  }
+
+/* Title Element */
+
+  &__title {
+    font-family: var(--font-header);
+    font-size: 3rem;
+    line-height: 1;
+    &.-allCaps {
+      font-family: var(--font-compressed);
+      font-size: 3.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      &.-large {
+        font-size: 4.5rem;
+      }
+    }
+    &.-xSmall {
+      font-size: 1.375rem;
+      font-family: var(--font-main);
+    }
+    &.-medium {
+      font-size: 2.75rem;
+      font-weight: 400;
+    }
+    &.-xLarge {
+      font-size: 5rem;
+    }
+    &.-maroon {
+      color: var(--secondary-maroon);
+    }
+    &.-orange {
+      color: var(--wcag-orange);
+    }
+  }
+
+/* Image Element */
+
+  &__img {
+    height: 540px;
+    margin: 24px auto;
+  }
+
+/* Text Element */
+
+  &__text {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .callout {
+    &.-gridItem {
+      &.-middle {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "sample_theme",
+  "version": "1.0.0",
+  "description": "A theme for Drupal",
+  "source": "src/index.html",
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "author": "Chase Conklin <developer@chasemconklin.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "parcel": "^2.0.0",
+    "parcel-namer-custom": "0.1.0-2",
+    "postcss": "^8.3.6",
+    "postcss-nested": "^5.0.6"
+  },
+  "parcel-namer-custom": {
+    ".js$": "scripts/[name].[type]",
+    ".css$": "styles/[name].[type]",
+    ".svg$": "images/[name].[type]"
+  },
+  "browserslist": [
+    "> 1%",
+    "not dead"
+  ]
+}

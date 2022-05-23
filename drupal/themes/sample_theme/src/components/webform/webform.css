@@ -1,0 +1,160 @@
+.webform {
+  width: 100%;
+
+  &__wrapper {
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    &.-fieldset {
+      margin-top: -12px;
+    }
+
+    &.-options {}
+
+    &.-option {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    &.-errors {}
+
+  }
+
+  &__fieldset {
+    max-width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: transparent;
+    border: 0;
+  }
+
+  &__label {
+    display: inline-block;
+    margin: 4px 0;
+    line-height: 1.125rem;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    &.-legend {
+      margin-bottom: 12px;
+      font-size: 18px;
+      font-family: var(--font-header);
+      text-transform: none;
+    }
+
+    &.-optionsLegend {
+      margin-bottom: 12px;
+    }
+
+    /**
+     * NOTE: non-BEM class due to unknown template being used for Javascript
+     * injected form fields not allowing overrides
+     **/
+    &.-required,
+    &.form-required {
+      position: relative;
+      &::after {
+        content: ' *';
+        color: var(--secondary-maroon);
+      }
+    }
+
+    /* for checkboxes and radios */
+    &.-option {
+      font-size: 1rem;
+      font-weight: normal;
+      text-transform: none;
+      display: inline; 
+    }
+
+  }
+
+  &__input {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 12px;
+    background: var(--neutral-white);
+    border: 1px solid var(--secondary-grey);
+    appearance: none;
+
+    &.-text {}
+
+    &.-textarea {}
+
+    &.-select {
+      appearance: auto;
+      border-radius: 0; /* For Safari */
+      &.-dateList {
+        width: auto;
+      }
+    }
+
+    &.-option {
+      width: auto;
+      appearance: revert;
+    }
+
+    &.-submit {
+      position: relative;
+      display: inline-block;
+      width: max-content;
+      margin: 12px 0 0 0;
+      padding: 8px 12px;
+      background-color: var(--wcag-green);
+      border: 0;
+      font-family: var(--font-header);
+      font-style: italic;
+      color: var(--neutral-white);
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+  }
+
+  &__description {
+    padding: 8px;
+    background-color: var(--neutral-white);
+    font-size: .8rem;
+    color: var(--neutral-darkGrey);
+  }
+
+  /** TODO: test this **/
+  &__message {
+    background-color: var(--primary-navy);
+    color: var(--neutral-white);
+
+    &.-error {
+      background-color: var(--secondary-maroon);
+    }
+  }
+
+  /** UTILITIES **/
+
+  .-hide-if-disabled.-disabled {
+    display: none;
+  }
+
+  .-visible {
+    visibility: visible;
+  }
+
+  .-hidden {
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    line-height: 0;
+  }
+
+  /** DRUPALISM OVERRIDES BREAKING BEM BEACUSE DRUPAL THEMEING IS 🗑 🔥 **/
+
+  .form-item-datetime-add-more-items {
+    display: none;
+  }
+
+  .webform-multiple-add .webform__input {
+    margin-top: 0;
+  }
+
+}

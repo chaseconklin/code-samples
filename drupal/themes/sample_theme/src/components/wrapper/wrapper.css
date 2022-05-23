@@ -1,0 +1,30 @@
+.wrapper {
+  &.-x {
+    overflow-x: hidden;
+  }
+  &.-y {
+    overflow-y: hidden;
+  }
+  &.-shim {
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  &.-page {
+    max-width: 1440px;
+    min-height: 55vh;
+    margin: 50px auto;
+  }
+  &.-tableScroll {
+    overflow-x: auto;
+  }
+
+}
+
+@media screen and (min-width: 641px) {
+  .wrapper {
+    &.-tableScroll {
+      overflow-x: visible;
+    }
+  }
+}

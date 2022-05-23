@@ -1,0 +1,40 @@
+# Main theme library.
+global:
+  js:
+    dist/scripts/content.js: {}
+    dist/scripts/header.js: {}
+    dist/scripts/hero.js: {}
+    dist/scripts/navigation.js: {}
+    dist/scripts/overflow.js: {}
+    dist/scripts/overflowButton.js: {}
+    dist/scripts/sidebar.js: {}
+  css:
+    base:
+      dist/styles/announcement.css: {}
+      dist/styles/banner.css: {}
+      dist/styles/body.css: {}
+      dist/styles/breadcrumb.css: {}
+      dist/styles/button.css: {}
+      dist/styles/button_readmore.css: {}
+      dist/styles/callout.css: {}
+      dist/styles/card.css: {}
+      dist/styles/content.css: {}
+      dist/styles/footer.css: {}
+      dist/styles/form.css: {}
+      dist/styles/grid.css: {}
+      dist/styles/header.css: {}
+      dist/styles/hero.css: {}
+      dist/styles/logo.css: {}
+      dist/styles/message.css: {}
+      dist/styles/navigation.css: {}
+      dist/styles/overflow.css: {}
+      dist/styles/overflowButton.css: {}
+      dist/styles/quickfact.css: {}
+      dist/styles/quote.css: {}
+      dist/styles/root.css: {}
+      dist/styles/search.css: {}
+      dist/styles/search_autocomplete.css: {}
+      dist/styles/sidebar.css: {}
+      dist/styles/view.css: {}
+      dist/styles/webform.css: {}
+      dist/styles/wrapper.css: {}

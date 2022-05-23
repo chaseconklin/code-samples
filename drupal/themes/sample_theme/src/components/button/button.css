@@ -1,0 +1,309 @@
+
+/* Button Block */
+
+.button {
+  display: inline-block;
+  background: none;
+  text-decoration: none;
+  margin: 24px 0 0 0;
+  width: max-content;
+  white-space: nowrap;
+
+  /* Buttons with gradient triangle */
+
+  &.-gradient {
+    font-family: var(--font-header);
+    font-style: italic;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      background: linear-gradient(to top left, var(--tc-transparent), var(--triangle-color));
+      width: 2.3em;
+      height: 100%;
+      top: 0;
+      right: 0;
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+    }
+    &.-large {
+      font-size: 1.5rem;
+      line-height: 30px;
+      padding: 12px 58px 12px 15px;
+    }
+    &.-small {
+      padding: 12px 47px 12px 13px;
+      font-size: 1.125rem;
+      line-height: 24px;
+    }
+    &.-navy {
+      background: var(--primary-navy);
+      color: var(--neutral-white);
+      --tc-transparent: var(--secondary-blue-transparent);
+      --triangle-color: var(--secondary-blue);
+    }
+    &.-yellow {
+      background: var(--secondary-yellow);
+      color: var(--primary-navy);
+      --tc-transparent: var(--secondary-blue-transparent);
+      --triangle-color: var(--secondary-blue);
+    }
+    &.-maroon {
+      background: var(--secondary-maroon);
+      color: var(--neutral-white);
+      --tc-transparent: var(--primary-orange-transparent);
+      --triangle-color: var(--primary-orange);
+    }
+    &.-white {
+      background: var(--neutral-white);
+      color: var(--primary-navy);
+      --tc-transparent: var(--primary-orange-transparent);
+      --triangle-color: var(--primary-orange);
+    }
+    &.-green {
+      background: var(--secondary-green);
+      color: var(--neutral-white);
+      --tc-transparent: var(--secondary-mint-transparent);
+      --triangle-color: var(--secondary-mint);
+    }
+    &.-disabled {
+      background: var(--neutral-lightGrey);
+      color: var(--neutral-mediumGrey);
+      --tc-transparent: var(--neutral-mediumGrey-transparent);
+      --triangle-color: var(--neutral-mediumGrey);
+    }
+    &.-navyAndOrange {
+      background: var(--primary-navy);
+      color: var(--neutral-white);
+      --tc-transparent: var(--primary-orange-transparent);
+      --triangle-color: var(--primary-orange);
+    }
+    &.-navyAndMaroon {
+      background: var(--primary-navy);
+      color: var(--neutral-white);
+      --tc-transparent: var(--secondary-maroon-transparent);
+      --triangle-color: var(--secondary-maroon);
+    }
+    &.-frostAndMaroon {
+      background: var(--secondary-frost);
+      color: var(--primary-navy);
+      --tc-transparent: var(--secondary-maroon-transparent);
+      --triangle-color: var(--secondary-maroon);
+    }
+    &.-frostAndMint {
+      background: var(--secondary-frost);
+      color: var(--primary-navy);
+      --tc-transparent: var(--secondary-mint-transparent);
+      --triangle-color: var(--secondary-mint);
+    }
+    &.-frostAndGreen {
+      background: var(--secondary-frost);
+      color: var(--primary-navy);
+      --tc-transparent: var(--secondary-green-transparent);
+      --triangle-color: var(--secondary-green);
+    }
+  }
+
+  /* Buttons with graident border */
+
+  &.-outline {
+    line-height: 23.4px;
+    color: var(--primary-navy);
+    border-width: 5px;
+    border-style: solid;
+    border-image-slice: 1;
+    &.-large {
+      font-size: 1.5rem;
+      line-height: 31px;
+      padding: 8px 32px;
+    }
+    &.-small {
+      font-size: 1.125rem;
+      line-height: 23px;
+      padding: 8px 32px;
+    }
+    &.-navyToFrost {
+      border-image-source: linear-gradient(to right, var(--primary-navy), var(--secondary-frost));
+    }
+    &.-mintToFrost {
+      border-image-source: linear-gradient(to right, var(--secondary-mint), var(--secondary-frost));
+    }
+    &.-greenToFrost {
+      border-image-source: linear-gradient(to right, var(--secondary-green), var(--secondary-frost));
+    }
+    &.-frostToGreen {
+      border-image-source: linear-gradient(to right, var(--secondary-frost), var(--secondary-green));
+    }
+    &.-frostToMaroon {
+      border-image-source: linear-gradient(to right, var(--secondary-frost), var(--secondary-maroon));
+    }
+    &.-maroonToOrange {
+      border-image-source: linear-gradient(to right, var(--secondary-maroon), var(--primary-orange));
+    }
+    &.-greenToMint {
+      border-image-source: linear-gradient(to right, var(--secondary-green), var(--secondary-mint));
+    }
+    &.-yellowToBlue {
+      border-image-source: linear-gradient(to right, var(--secondary-yellow), var(--secondary-blue));
+    }
+    &.-disabled {
+      border-image-source: linear-gradient(to right, var(--secondary-grey), var(--neutral-mediumGrey));
+      color: var(--neutral-mediumGrey);
+    }
+  }
+
+  /* Buttons with graident rectangle and single arrow after text */
+
+  &.-gradientArrow {
+    font-family: var(--font-header);
+    font-style: italic;
+    position: relative;
+    font-size: 1.125rem;
+    padding: 10.5px 40px 10.5px 12px;
+    background: var(--background);
+    &::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      display: inline-block;
+      padding: 5px;
+      transform: rotate(-45deg);
+      z-index: 1;
+      border: solid var(--background);
+      border-width: 0 3px 3px 0;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 100%;
+      top: 0;
+      right: 0;
+      background: linear-gradient(to top left, var(--rectangle-transparent), var(--rectangle));
+    }
+    &.-frost {
+      color: var(--primary-navy);
+      --background: var(--secondary-frost);
+      --rectangle-transparent: var(--secondary-maroon-transparent);
+      --rectangle: var(--secondary-maroon);
+    }
+    &.-orange {
+      color: var(--primary-navy);
+      --background: var(--wcag-orange);
+      --rectangle-transparent: var(--primary-navy-transparent);
+      --rectangle: var(--primary-navy)
+    }
+    &.-navy {
+      color: var(--neutral-white);
+      --background: var(--primary-navy);
+      --rectangle-transparent: var(--secondary-blue-transparent);
+      --rectangle: var(--secondary-blue);
+    }
+  }
+
+  /* Buttons with two yellow arrows after text */
+
+  &.-arrow {
+    color: var(--primary-navy);
+    font-size: 1.125rem;
+    position: relative;
+    margin: 24px 24px 0;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 102%;
+      border: solid var(--secondary-yellow);
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 5px;
+      transform: rotate(-45deg);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: calc(102% + 8px);
+      border: solid var(--secondary-yellow);
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 5px;
+      transform: rotate(-45deg);
+    }
+    &.-single {
+      &::after {
+        display: none;
+      }
+    }
+    &.-reverse {
+      &::before {
+        left: unset;
+        right: 102%;
+        transform: rotate(135deg);
+      }
+      &::after {
+        left: unset;
+        right: calc(102% + 8px);
+        transform: rotate(135deg);
+      }
+    }
+    &.-disabled {
+      color: var(--neutral-mediumGrey);
+      &::before, &::after {
+        border-color: var(--neutral-mediumGrey);
+      }
+    }
+    &.-sidebar {
+      display: block;
+      margin: 24px auto 0;
+      position: relative;
+      left: calc(-2% - 8px);
+    }
+  }
+
+  &.-expanded {
+    width: 100%;
+    text-align: center;
+  }
+
+  &.-edit {
+    position: absolute;
+    overflow: hidden;
+    top: -15px;
+    right: -15px;
+    display: none;
+    width: 30px;
+    height: 30px;
+    background: white url("/images/pencil.svg") center center no-repeat;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 20px;
+    color: white;
+    padding: 8px;
+    font-size: .01em;
+  }
+
+}
+
+.buttonContainer {
+  position: relative;
+  &.-edit {
+    &:focus-within,
+    &:hover {
+      outline: 1px dashed var(--secondary-grey);
+      .button.-edit {
+        display: block;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .button {
+    margin: 24px 24px 0 0;
+    &.-gradientArrow {
+      &::before {
+        top: 14px;
+      }
+    }
+  }
+}

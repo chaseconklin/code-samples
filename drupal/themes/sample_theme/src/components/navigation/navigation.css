@@ -1,0 +1,543 @@
+/* Navigation Block: Corresponds to the menu name in Drupal */
+
+.navigation {
+  width: 100%;
+  &.-card {
+    margin-top: 24px;
+    max-width: 320px;
+  }
+  &.-suggestion {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 900px;
+    margin: 36px auto 0;
+    font-family: var(--font-header);
+    &.-first {
+      margin-top: 0;
+    }
+    &.-left {
+      margin-left: 0;
+    }
+    &.-task {
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 24px;
+    }
+  }
+  &.-primary {
+    display: none;
+    font-variation-settings: 'wght' 600;
+    max-width: 660px;
+  }
+  &.-mobile {
+      display: block;
+      background: #DADADA;
+  }
+  &.-utility {
+    text-transform: uppercase;
+    max-width: 660px;
+    margin-left: 50px;
+    font-size: .75rem;
+  }
+  &.-footer {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  &.-legal {
+    margin-bottom: 24px;
+    color: var(--neutral-mediumGrey);
+  }
+  &.-social {
+    max-width: 280px;
+  }
+  &.-icon {
+    max-width: 280px;
+  }
+  &.-label {
+    font-size: 1rem;
+    font-family: var(--font-header);
+    max-width: 900px;
+  }
+  &.-sidebar {
+    margin-left: 20px;
+    list-style: none;
+  }
+
+/* Menu Element: Most menus will have this class on <ul> */
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    &.-sidebar {
+      display: block;
+      list-style: none;
+      margin-left: 12px;
+      line-height: 1.3;
+    }
+    &.-mobile {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      background: #DADADA;
+      &.-open {
+        display: block;
+      }
+      &.-child {
+        position: relative;
+        width: 100vw;
+        left: 50%;
+        margin-left: -50vw;
+        padding-left: 7%;
+      }
+    }
+    &.-label {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    &.-suggestion {
+      display: inline-flex;
+      flex-direction: column;
+      width: 100%;
+      height: 200px;
+      justify-content: space-around;
+    }
+    &.-legal {
+      gap: 16px;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+    &.-footer {
+      gap: 16px;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+  }
+
+/* Submenu Element: Child menus for the header menus, used for dropdowns */
+  &__submenu {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    list-style: none;
+    width: 240px;
+    font-variation-settings: 'wght' 400;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(to right, var(--primary-orange), var(--secondary-maroon));
+    }
+    &.-primary {
+      padding-top: 16px;
+    }
+    &.-visible {
+      display: block;
+    }
+  }
+
+/* Grid Element: Goes on <ul> for in-content menus */
+
+  &__grid {
+    display: grid;
+    --columns: 1;
+    grid-template-columns: repeat(var(--columns), minmax(100px, 100%));
+    column-gap: 4px;
+    row-gap: 4px;
+    justify-items: stretch;
+    list-style-type: none;
+    margin: 16px auto;
+    padding: 0;
+    li {
+      height: 100%;
+    }
+  }
+
+/* Header Element: Currently only used for the mobile menu */
+
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5%;
+  }
+
+/* Title Element: Menu title for suggestion navigation and enrollment area landing pages primary navigation */
+
+  &__title {
+    display: inline-block;
+    font-family: var(--font-header);
+    font-weight: 600;
+    color: var(--primary-navy);
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    &.-underline {
+      padding-bottom: 5px;
+      margin: 0 12px 12px 0;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        background: linear-gradient(to right, var(--primary-orange), var(--secondary-maroon));
+      }
+    }
+    &.-suggestion {
+      margin: 0;
+      padding: 0;
+      font-weight: 800;
+      text-transform: none;
+      &::after {
+        content: none;
+      }
+    }
+    &.-mobile {
+      padding: 16px 0 14px 0;
+      font-size: 1.125rem;
+    }
+  }
+
+  &__gridTitle {
+    margin-bottom: 16px;
+    font-size: .9rem;
+    font-variation-settings:  'wght' 700;
+    text-transform: uppercase;
+  }
+
+/* Item Element: Class for the <li> elements */
+
+  &__item {
+    padding: 0 5%;
+    background: #CFCFCF;
+    margin-top: 2px;
+    position: relative;
+    /*
+    &.-parent {
+      &::after {
+        position: absolute;
+        top: .9rem;
+        right: 24px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 10px solid var(--secondary-maroon);
+        transform: rotate(90deg);
+      }
+      &.-open {
+        &::after {
+          transform: none;
+        }
+      }
+    }
+    */
+  }
+
+/* Link Element: Styles for the <a> tags when needed for certain menus */
+
+  &__link {
+    color: var(--primary-navy);
+    text-decoration: none;
+    &.-suggestion {
+      text-decoration: underline;
+      color: var(--utility-linkBlue);
+    }
+    &.-legal {
+      color: var(--neutral-mediumGrey);
+      background: white;
+      padding: 4px 8px;
+      &.-yellow {
+        background: var(--secondary-yellow);
+        color: var(--primary-navy);
+      }
+      &.-maroon {
+        background: var(--secondary-maroon);
+        color: var(--neutral-white);
+      }
+    }
+    &.-utility {
+      display: block;
+      height: 40px;
+      line-height: 40px;
+    }
+    &.-subLink {
+      display: block;
+      font-size: 14px;
+      text-transform: none;
+      padding: 12px;
+      background: var(--neutral-white);
+      border-bottom: solid 1px var(--neutral-lightGrey);
+    }
+    &.-gridItem {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: underline;
+      background: var(--neutral-lightGrey);
+      color: var(--utility-linkBlue);
+      width: 100%;
+      height: 100%;
+      padding: 15px 0;
+      text-align: center;
+      &:hover {
+        background-color: rgba(var(--neutral-mediumGrey-rgb), .2);
+      }
+      &.-selected {
+        font-variation-settings: 'wght' 700;
+        color: var(--neutral-darkGrey);
+        background-color: rgba(var(--neutral-mediumGrey-rgb), .3);
+        text-decoration: none;
+      }
+      &.-emphasize {
+        font-variation-settings: 'wght' 700;
+      }
+    }
+    &.-label {
+      display: inline-block;
+      background: var(--primary-navy);
+      color: var(--neutral-white);
+      margin: 10px 0;
+      padding: 8px 12px;
+    }
+    &.-mobile {
+      display: inline-block;
+      font-size: 1.125rem;
+      padding: 8px 0;
+    }
+    &.-sidebar {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
+        color: var(--secondary-maroon);
+      }
+      &.-firstLevel {
+        font-variation-settings: 'wght' 700;
+      }
+      &.-secondLevel {
+        /*margin-left: 12px;*/
+      }
+      &.-parent {}
+      &.-child {}
+      &.is-active {
+        color: var(--secondary-maroon);
+      }
+    }
+  }
+
+/* Image Element: For menus that use images for the links (ex. Social Media) */
+
+  &__img {
+    width: auto;
+    --width: 55px;
+    --height:  55px;
+    width: var(--width);
+    height: var(--height);
+    &.-social {
+      --width: 28px;
+      --height: 28px;
+      &.-twitter {
+        --width: 31px;
+      }
+    }
+    &.-footer {
+      --width: auto;
+      mix-blend-mode: darken;
+      opacity: 0.5;
+    }
+    &.-card {
+      --width: auto;
+      --height: 65px;
+    }
+  }
+
+  &__expand {
+    --icon-color: var(--secondary-maroon);
+    position: absolute;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 14px;
+    content: "";
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    cursor: pointer;
+
+    &.-open {
+      top:8px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        width: 1.25rem;
+        height: 0.2rem;
+        background: var(--icon-color);
+        box-shadow:
+        0 0.5rem 0 0 var(--icon-color),
+        0 1rem 0 0 var(--icon-color);
+      }
+    }
+    &.-close {
+      top:8px;
+      &::before {
+        position: absolute;
+        display: block;
+        content: "";
+        background: var(--icon-color);
+        height: 3px;
+        width: 1.5rem;
+        border-radius: 4px;
+        transform: rotate(45deg);
+      }
+      &::after {
+        position: absolute;
+        display: block;
+        content: "";
+        background: var(--icon-color);
+        height: 3px;
+        width:1.5rem;
+        border-radius: 4px;
+        transform: rotate(-45deg);
+      }
+    }
+    &.-submenu {
+      top: 0;
+      &::before {
+        display: none;
+      }
+      &::after {
+        display: block;
+        width: 0;
+        height: 0;
+        background-color: transparent;
+        content: "";
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 12px solid var(--icon-color);
+        border-radius: 0;
+        transform: rotate(90deg);
+      }
+      &.-open {
+        &::after {
+          transform: none;
+        }
+      }
+    }
+  }
+
+  &__pager {
+
+    &List {
+      display: inline-block;
+      margin: 16px inherit;
+      list-style: none;
+    }
+
+    &ListItem {
+      display: inline-block;
+      width: auto;
+      padding: 4px;
+      &.-first {
+
+      }
+    }
+
+    &ListItemLink {
+      display: inline-block;
+    }
+
+  }
+
+}
+
+@media screen and (min-width: 641px) {
+  .navigation {
+    &__grid {
+      --columns: 2;
+    }
+    &__menu {
+      &.-label {
+        flex-direction: row;
+      }
+    }
+    &__title {
+      white-space: nowrap;
+    }
+    &.-suggestion {
+      flex-direction: row;
+      align-items: center;
+    }
+    &__menu {
+      &.-footer {
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: 24px;
+      }
+      &.-legal {
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: 24px;
+      }
+      &.-suggestion {
+        height: auto;
+        flex-direction: row;
+      }
+    }
+    &__item {
+      &::after {
+        right: 18px;
+      }
+    }
+    &__icon {
+      right: 0.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .navigation {
+    &.-primary {
+      display: inline-block;
+    }
+    &.-mobile {
+      display: none;
+    }
+    &__menu {
+      &.-primary {
+        justify-content: inherit;
+        gap: 24px;
+      }
+      &.-footer {
+        justify-content: unset;
+      }
+      &.-legal {
+        justify-content: unset;
+      }
+
+      /* when the 2nd level is NOT exposed */
+      &.-topLevel {
+        justify-content: space-between;
+        gap: unset;
+      }
+    }
+  }
+}

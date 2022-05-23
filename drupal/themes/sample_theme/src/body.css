@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  &:focus {
+    outline: 3px solid var(--utility-linkBlue);
+    /* prevents outline on mousedown */
+    &:active {
+      outline: none;
+    }
+  }
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+  font-family: var(--font-main);
+  margin: 0;
+  background-color: var(--background-grey);
+  color: var(--primary-navy);
+  overflow-x: hidden;
+  line-height: 1.3;
+}
+
+p {
+  margin-top: 16px;
+}
+
+strong, .-bold {
+  font-variation-settings: 'wght' 700;
+}
+
+a {
+  color: var(--utility-linkBlue);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+ul:not([class]),
+ol:not([class]) {
+  margin-bottom: 16px;
+  margin-left: 16px;
+  ul:not([class]),
+  ol:not([class]) {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+ol:not([class]) {
+  margin-left: 20px;
+}
+
+/* Style the back to top button provided by the Back to Top Module */
+
+#backtotop {
+  font-family: var(--font-header);
+  font-size: .85rem;
+  height: 40px;
+  border-radius: 0px;
+}
+
+@media screen and (min-width: 641px) {
+  html {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,26 @@
+name: Sample Theme
+type: theme
+base theme: stable
+description: A theme for Drupal
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+libraries:
+  - sample_theme/global
+ckeditor_stylesheets:
+  - dist/styles/root.css
+  - dist/styles/body.css
+  - dist/styles/button.css
+  - dist/styles/content.css
+  - dist/styles/navigation.css
+  - dist/styles/wrapper.css
+regions:
+  announcement: 'Announcement'
+  header_top: 'Header Top'
+  header_main: 'Header Main'
+  header_bottom: 'Header Bottom'
+  overflow_top: 'Overflow Top'
+  overflow_bottom: 'Overflow Bottom'
+  content: 'Content'
+  footer_left: 'Footer Left'
+  footer_right: 'Footer Right'

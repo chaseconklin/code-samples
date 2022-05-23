@@ -1,0 +1,26 @@
+.logo {
+  &.-horz {
+    flex: 1;
+    min-width: 220px;
+    max-width: 320px;
+    margin: 0 22px;
+  }
+  &.-vert {
+    height: 136px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .logo {
+    &.-horz {
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .logo {
+    &.-horz {
+    }
+  }
+}

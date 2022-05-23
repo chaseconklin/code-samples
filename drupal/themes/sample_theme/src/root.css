@@ -1,0 +1,63 @@
+/** Standard breakpoints
+  @media screen and (min-width: 641px) table
+  @media screen and (min-width: 1025px) desktop
+  @media screen and (min-width: 1441px) large desktop
+  */
+
+:root {
+  --primary-navy: #00205B;
+  --primary-orange: #FF671F;
+  --neutral-darkGrey: #222222;
+  --neutral-mediumGrey: #707070;
+  --neutral-lightGrey: #EFEFEF;
+  --neutral-white: #FFFFFF;
+  --secondary-maroon: #910048;
+  --secondary-blue: #00A9CE;
+  --secondary-frost: #59CBE8;
+  --secondary-green: #48A23F;
+  --secondary-mint: #A1D884;
+  --secondary-yellow: #FFBF3F;
+  --secondary-gold: #C5B783;
+  --secondary-grey: #B1B3B3;
+
+  --primary-navy-transparent: #00205B00;
+  --primary-orange-transparent: #FF671F00;
+  --neutral-darkGrey-transparent: #22222200;
+  --neutral-mediumGrey-transparent: #76767600;
+  --neutral-lightGrey-transparent: #EFEFEF00;
+  --neutral-white-transparent: #FFFFFF00;
+  --secondary-maroon-transparent: #91004800;
+  --secondary-blue-transparent: #00A9CE00;
+  --secondary-frost-transparent: #59CBE800;
+  --secondary-green-transparent: #48A23F00;
+  --secondary-mint-transparent: #A1D88400;
+  --secondary-yellow-transparent: #FFBF3F00;
+  --secondary-gold-transparent: #C5B78300;
+  --secondary-grey-transparent: #B1B3B300;
+
+  --primary-navy-rgb: 0, 32, 91;
+  --primary-orange-rgb: 255, 103, 31;
+  --neutral-darkGrey-rgb: 34, 34, 34;
+  --neutral-mediumGrey-rgb: 118, 118, 118;
+  --neutral-lightGrey-rgb: 239, 239, 239;
+  --neutral-white-rgb: 255, 255, 255;
+  --secondary-maroon-rgb: 145, 0, 72;
+  --secondary-blue-rgb: 0, 169, 206;
+  --secondary-frost-rgb: 89, 203, 232;
+  --secondary-green-rgb: 72, 162, 63;
+  --secondary-mint-rgb: 161, 216, 132;
+  --secondary-yellow-rgb: 255, 191, 63;
+  --secondary-gold-rgb: 197, 183, 131;
+  --secondary-grey-rgb: 177, 179, 179;
+
+  --wcag-orange: #FB651E;
+  --wcag-lightBlue: #00A2C6;
+  --wcag-darkBlue: #00819D;
+  --wcag-green: #0D8A01;
+  --wcag-gold: #A29460;
+  --utility-linkBlue: #003DAF;
+  --background-grey: #F7F7F7;
+  --font-header: 'Sanchez W03', Rockwell, "Lucida Bright", slab-serif, serif;
+  --font-main: 'Univers Next Variable W05', Helvetica, Arial, sans-serif;
+  --font-compressed: 'Univers Next W05', Helvetica, Arial, sans-serif;
+}

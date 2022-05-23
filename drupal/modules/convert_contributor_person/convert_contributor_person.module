@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Convert Contributor to Person module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+function convert_contributor_to_person_deploy_convert () {
+  /* Query all articles where the contributor field has an entry */
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'article');
+  $query->condition('status', 1);
+  $query->exists('field_a_contributor');
+  $article_ids = $query->execute();
+
+  foreach ($article_ids as $id) {
+    $staff_id_array = array();
+    $person_array = array();
+
+    /* Loop through each article to the get value of the contributor field */
+    $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+    $article = $node_storage->load($id);
+    $contributors = $article->get('field_a_contributor')->getValue();
+
+    foreach ($contributors as $contributor) {
+      /* Loop through each contributor on each article to get the staff id of that contributor */
+      $contributor_node = $node_storage->load($contributor['target_id']);
+      $staff_id_field = $contributor_node->get('field_c_staff_id')->getValue();
+      $staff_id = '';
+      if (count($staff_id_field) > 0) {
+        $staff_id = $staff_id_field[0]['value'];
+      }
+      array_push($staff_id_array, $staff_id);
+
+      if (!empty($staff_id)) {
+        /* Get the person node that has a corresponding staff id to the contributor node if the contributor node as a staff id */
+        $person_query = \Drupal::entityQuery('node');
+        $person_query->condition('type', 'person');
+        $person_query->condition('field_per_staff_id', $staff_id);
+        $person = $person_query->execute();
+        if (count($person) > 0) {
+          array_push($person_array, array_values($person)[0]);
+        }
+      }
+    }
+
+    foreach($person_array as $index => $person_id) {
+      /* Add each person node to the related person field on the article */
+      if ($index == 0) {
+        $article->set('field_a_related_person', $person_id);
+      }
+      else {
+        $article->get('field_a_related_person')->appendItem([
+          'target_id' => $person_id,
+        ]);
+      }
+    }
+    $article->save();
+  }
+}

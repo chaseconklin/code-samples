@@ -1,0 +1,6 @@
+name: Convert Contributor to Person
+type: module
+description: This module executes the necessary updates to convert articles to reference person content type instead of contributor content type.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
